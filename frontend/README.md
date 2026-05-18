@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+Dashboard de Análisis Semántico con IA (Llama 3 + Groq)
+Este proyecto es una solución Full-Stack diseñada para la automatización del análisis de feedback de clientes en tiempo real. Utiliza modelos de lenguaje de gran escala (LLM) para categorizar, medir la urgencia y generar respuestas sugeridas con una latencia ultra baja.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Características Principales
+Análisis Multidimensional: Clasifica el sentimiento (Positivo/Negativo/Neutro), detecta categorías (App, Precio, Servicio) y asigna niveles de urgencia del 1 al 5.
 
-Currently, two official plugins are available:
+Inferencia de Alta Velocidad: Implementación de Groq con modelos Llama 3, aprovechando la tecnología LPU (Language Processing Unit) para respuestas casi instantáneas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Visualización Dinámica: Dashboards interactivos construidos con Recharts para monitorear tendencias de CX (Customer Experience).
 
-## React Compiler
+Arquitectura Escalable: Backend asíncrono con FastAPI y Frontend moderno con React + Tailwind v4.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ Stack Tecnológico
+Frontend: React, TypeScript, Tailwind CSS v4, Recharts.
 
-## Expanding the ESLint configuration
+Backend: Python, FastAPI, Uvicorn, Pydantic.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+IA: Groq SDK, Llama 3 (Inferencia en hardware especializado).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+DevOps: Git, Variables de Entorno (.env), próximamente Docker.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Instalación y Configuración
+Requisitos Previos
+Python 3.10+
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Node.js 18+
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Una API Key de Groq Console.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Pasos
+Clonar el repositorio:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bash
+git clone https://github.com/tu-usuario/Proyecto_1.git
+cd Proyecto_1
+Configurar el Backend:
+
+Bash
+cd backend
+pip install -r requirements.txt
+# Crear un archivo .env con tu llave:
+# GROQ_APY_KEY=tu_llave_aqui
+uvicorn main:app --reload
+Configurar el Frontend:
+
+Bash
+cd ../frontend
+npm install
+npm run dev
+ Ingeniería de Prompts (Logic)
+El sistema utiliza un System Prompt especializado que actúa como un experto en CX, transformando texto no estructurado en datos estructurados (JSON) bajo restricciones determinísticas, lo que facilita la automatización de procesos de soporte.
