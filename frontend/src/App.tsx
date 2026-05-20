@@ -14,8 +14,6 @@ import {
 } from 'recharts';
 import {
   Send,
-  AlertCircle,
-  CheckCircle2,
   MessageSquare,
   Loader2,
   RefreshCw,
@@ -28,6 +26,7 @@ interface AnalisisResultado {
   categoria: string;
   urgencia: number; // 0-5
   resumen?: string;
+  respuesta_sugerida?: string;
 }
 
 const SAMPLE_EXAMPLES = [
@@ -92,8 +91,7 @@ const App: React.FC = () => {
     const lineas = inputText.split('\n').map((l) => l.trim()).filter((l) => l.length > 0);
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/analizar', { textos: lineas });
-      console.log('Respuesta del servidor:', res.data);
+const res = await axios.post('https://ai-feedback-analyzer-n0az.onrender.com/analizar', { textos: lineas });      console.log('Respuesta del servidor:', res.data);
 
       // Normalizar resultado a un arreglo
       let resultado = res.data && res.data.resultado;
