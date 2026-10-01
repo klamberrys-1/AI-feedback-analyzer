@@ -21,11 +21,14 @@ app = FastAPI()
 # Ajusta orígenes a tu frontend para más seguridad
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "https://portafolio-6eb68.firebaseapp.com", "https://portafolio-6eb68.web.app"
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://portafolio-6eb68.firebaseapp.com",
+        "https://portafolio-6eb68.web.app",
+        "https://portafolio-fabian.web.app"
     ],
     allow_methods=["*"],
-
-
     allow_headers=["*"],
 )
 
@@ -64,8 +67,8 @@ Comentarios:
 """
 
     # Intentamos el modelo más reciente y estable; si no está disponible usamos un fallback
-    model_primary = "llama-3.3-70b-versatile"
-    model_fallback = "llama-3.1-70b-versatile"
+    model_primary = "openai/gpt-oss-120b"
+    model_fallback = "openai/gpt-oss-20b"
     response = None
     try:
         response = client.chat.completions.create(
